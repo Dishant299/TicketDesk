@@ -77,3 +77,52 @@ TicketDesk/
 | GET    | `/api/tickets`           | List tickets, optional `?status=` and `?search=`  |
 | GET    | `/api/tickets/:ticket_id`| Get one ticket with its notes                     |
 | PUT    | `/api/tickets/:ticket_id`| Update status and/or add a note                   |
+
+Running Locally
+Prerequisites
+Node.js 18+
+A MongoDB connection string (local MongoDB or a free MongoDB Atlas cluster)
+1. Clone the repo
+bash
+git clone https://github.com/Dishant299/TicketDesk.git
+cd TicketDesk
+2. Backend setup
+bash
+cd server
+npm install
+cp .env.example .env
+# edit .env and add your MONGODB_URI
+npm run dev
+
+The API runs on http://localhost:4000 by default.
+
+3. Frontend setup
+
+In a new terminal:
+
+bash
+cd client
+npm install
+cp .env.example .env
+# edit .env if your API runs on a different URL
+npm run dev
+
+The app runs on http://localhost:5173 by default.
+
+Environment Variables
+
+server/.env
+
+MONGODB_URI=your_mongodb_connection_string
+PORT=4000
+
+client/.env
+
+VITE_API_URL=http://localhost:4000/api
+Deployment
+
+Both the frontend and backend are deployed on Vercel, pointed at a MongoDB Atlas cluster. VITE_API_URL in the frontend's Vercel project settings points at the deployed backend's /api route.
+
+Author
+
+Dishant Bhimani LinkedIn
